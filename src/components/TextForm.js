@@ -10,17 +10,17 @@ function TextForm(props) {
 
   const handleLowercaseClick = () => {
     setText(text.toLowerCase());
-    props.showAlert("info", "Converted to lower case!");
+    props.showAlert("success", "Converted to lower case!");
   }
 
   const handleTitlecaseClick = () => {
     text && setText(text.split(" ").map(word => word[0].toUpperCase() + word.slice(1).toLowerCase()).join(" "));
-    props.showAlert("warning", "Converted to Title Case!");
+    props.showAlert("success", "Converted to Title Case!");
   }
 
   const handleCamelcaseClick = () => {
     text && setText(text.split(" ").map((word, index) => index === 0 ? word.toLowerCase() : word[0].toUpperCase() + word.slice(1).toLowerCase()).join(" "));
-    props.showAlert("danger", "Converted to camel Case!");
+    props.showAlert("success", "Converted to camel Case!");
   }
 
   const handleRemoveExtraSpacesClick = () => {
@@ -28,8 +28,8 @@ function TextForm(props) {
   }
 
   const handleRemoveAllSpacesClick = () => {
-    setText(text.replace(" ", ""));
-    props.showAlert("danger", "Removed spaces!");
+    setText(text.split(" ").filter(val => val !== "").join(""));
+    props.showAlert("success", "Removed spaces!");
   }
 
   const handleCopyClipboard = () => {

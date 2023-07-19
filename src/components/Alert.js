@@ -3,7 +3,9 @@ import React from 'react'
 function Alert(props) {
   const alertStyles = {
     position: "absolute",
-    top: 64.8,
+    maxWidth: "100%",
+    width: "max-content",
+    top: 70,
     left: "50%",
     transform: "translateX(-50%)"
   }
@@ -14,7 +16,7 @@ function Alert(props) {
 
   return (
     props.alertInfo &&
-    <div style={alertStyles}>
+    <div className='container' style={alertStyles}>
       <svg xmlns="http://www.w3.org/2000/svg" className="d-none">
         <symbol id="success" viewBox="0 0 16 16">
           <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
@@ -30,14 +32,14 @@ function Alert(props) {
         </symbol>
       </svg>
 
-      <div className={`container alert alert-${props.alertInfo.type} d-flex align-items-center`} role="alert">
-        <svg className="bi flex-shrink-0 ms-2 me-3" style={{ height: 20, width: 20 }} role="img" aria-label={`${capitalize(props.alertInfo.type)}:`}>
+      <div className={`alert alert-${props.alertInfo.type} m-0 d-flex align-items-center flex-wrap`} role="alert">
+        <svg className="bi flex-shrink-0 me-2 my-1" style={{ height: 20, width: 20 }} role="img" aria-label={`${capitalize(props.alertInfo.type)}:`}>
           <use xlinkHref={`#${props.alertInfo.type}`} />
         </svg>
         <strong>{capitalize(props.alertInfo.type)}!&nbsp;</strong>
-        <div>
+        <p className='my-1'>
           {props.alertInfo.message}
-        </div>
+        </p>
       </div>
     </div>
   )
