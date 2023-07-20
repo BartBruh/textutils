@@ -14,12 +14,12 @@ function TextForm(props) {
   }
 
   const handleTitlecaseClick = () => {
-    text && setText(text.split(" ").map(word => word[0].toUpperCase() + word.slice(1).toLowerCase()).join(" "));
+    text && setText(text.split(" ").map(word => word === "" ? "" : word[0].toUpperCase() + word.slice(1).toLowerCase()).join(" "));
     props.showAlert("success", "Converted to Title Case!");
   }
 
   const handleCamelcaseClick = () => {
-    text && setText(text.split(" ").map((word, index) => index === 0 ? word.toLowerCase() : word[0].toUpperCase() + word.slice(1).toLowerCase()).join(" "));
+    text && setText(text.split(" ").map((word, index) => index === 0 ? word.toLowerCase() : word === "" ? "" : word[0].toUpperCase() + word.slice(1).toLowerCase()).join(" "));
     props.showAlert("success", "Converted to camel Case!");
   }
 
