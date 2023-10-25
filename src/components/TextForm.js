@@ -14,7 +14,9 @@ function TextForm(props) {
   }
 
   const handleTitlecaseClick = () => {
-    text && setText(text.split(" ").map(word => word === "" ? "" : word[0].toUpperCase() + word.slice(1).toLowerCase()).join(" "));
+    text
+      && setText(text.split(" ").map(word => word === "" ? "" : word[0].toUpperCase() + word.slice(1).toLowerCase()).join(" ")
+        .split("\n").map(word => word === "" ? "" : word[0].toUpperCase() + word.slice(1)).join("\n"));
     props.showAlert("success", "Converted to Title Case!");
   }
 
@@ -65,8 +67,8 @@ function TextForm(props) {
         <p>{getTextWordCount()} words, {getTextCharCount()} characters.</p>
         <p>{Math.round(getTextWordCount() * 0.008)} minutes read.</p>
         <h2>Preview</h2>
-        <p>{text.trim() || "Nothing to preview"}</p>
-      </div>
+        <p style={{ "white-space": "pre-line"}}>{text.trim() || "Nothing to preview"}</p>
+    </div >
     </>
   )
 }
